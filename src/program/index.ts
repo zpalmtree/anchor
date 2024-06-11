@@ -366,7 +366,7 @@ export class Program<IDL extends Idl = Idl> {
       signature: string
     ) => void
   ): number {
-    return this._events.addEventListener(eventName, callback);
+    return this._events.addEventListener(eventName as string, callback);
   }
 
   /**

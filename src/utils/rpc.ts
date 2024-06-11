@@ -202,10 +202,12 @@ export async function simulateTransaction(
         console.error(res.error.message, logTrace);
       }
     }
-    throw new SendTransactionError(
-      "failed to simulate transaction: " + res.error.message,
-      logs
-    );
+    throw new SendTransactionError({
+      transactionMessage: "failed to simulate transaction: " + res.error.message,
+      logs,
+      action: 'simulate',
+      signature: '',
+    });
   }
   return res.result;
 }
