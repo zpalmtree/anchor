@@ -221,7 +221,8 @@ class InstructionFormatter {
           .map((d: IdlField) =>
             this.formatIdlData(
               { name: "", type: (<IdlTypeVec>idlField.type).vec },
-              d
+              d,
+              types
             )
           )
           .join(", ") +
@@ -299,7 +300,7 @@ class InstructionFormatter {
                 (v: IdlField) => v.name === f
               );
               if (!idlField) {
-                throw new Error("Unable to find variant");
+                return f + ": " + `""`;
               }
               return (
                 f +
